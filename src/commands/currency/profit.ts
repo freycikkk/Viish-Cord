@@ -6,7 +6,7 @@ export default {
   run: async (client: Viish, message: Message, args: string[]) => {
     const profitQuantity = parseInt(args[0] as string, 10);
 
-    const data = await client.database.prepare('SELECT profits FROM profits WHERE profit_type = ?').get('profit');
+    const data = (await client.database.prepare('SELECT profits FROM profits WHERE profit_type = ?').get('profit')) as { profits: number };
 
     if (!data) {
       await client.database.prepare('INSERT INTO profits (profit_type, profits) VALUES (?, ?)').run('profit', 0);
