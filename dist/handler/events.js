@@ -1,5 +1,4 @@
 import { readdirSync } from 'node:fs';
-import Viish from '../base/Client.js';
 export const loadEvents = async (client) => {
     let loadedEventsCount = 0;
     for (const dir of readdirSync('./dist/events/')) {

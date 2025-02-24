@@ -1,4 +1,3 @@
-import Viish from '../../base/Client.js';
 export default {
     name: 'error',
     run: async (_client, error) => {

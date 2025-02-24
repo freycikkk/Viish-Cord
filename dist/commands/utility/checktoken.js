@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 export default {
     name: 'checktoken',
     run: async (_client, message, args) => {

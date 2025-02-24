@@ -1,5 +1,3 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 import { handleAddReact, handleRemoveReact, handleConfig, handleReset } from '../../functions/autoReact.js';
 export default {
     name: 'autoreact',

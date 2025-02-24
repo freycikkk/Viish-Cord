@@ -1,5 +1,3 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 async function handleCommand(client, message, args) {
     const cmd = args.shift()?.toLowerCase();
     if (cmd?.length == 0)

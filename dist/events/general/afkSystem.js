@@ -1,5 +1,3 @@
-import { Message, User } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 export default {
     name: 'messageCreate',
     run: async (client, message) => {

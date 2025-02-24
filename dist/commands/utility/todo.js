@@ -1,5 +1,3 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 import { handleAddTask, handleRemoveTask, handleViewTasks, handleResetTasks } from '../../functions/todo.js';
 export default {
     name: 'todo',

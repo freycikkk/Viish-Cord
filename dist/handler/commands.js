@@ -1,5 +1,4 @@
 import { readdirSync } from 'node:fs';
-import Viish from '../base/Client.js';
 export const loadCommands = async (client) => {
     let loadedCommandsCount = 0;
     for (const dir of readdirSync('./dist/commands/')) {

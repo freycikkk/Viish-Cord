@@ -1,5 +1,3 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 import axios from 'axios';
 export default {
     name: 'c2i',

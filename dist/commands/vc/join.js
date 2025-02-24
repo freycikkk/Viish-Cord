@@ -1,6 +1,4 @@
 import { joinVoiceChannel } from '@discordjs/voice';
-import { Message, VoiceChannel } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 export default {
     name: 'join',
     run: async (client, message, args) => {

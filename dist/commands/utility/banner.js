@@ -1,5 +1,3 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
 export default {
     name: 'banner',
     run: async (client, message, args) => {

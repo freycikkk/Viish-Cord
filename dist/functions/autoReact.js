@@ -1,5 +1,3 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../base/Client.js';
 async function handleAddReact(client, message, keyword, emoji) {
     try {
         const data = (await client.database.prepare('SELECT * FROM autoreact WHERE client_id = ?').get('key'));
