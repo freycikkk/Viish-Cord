@@ -1,0 +1,44 @@
+import { Message } from 'discord.js-selfbot-v13';
+import Viish from '../../base/Client.js';
+
+export default {
+  name: 'timer',
+  run: async (_client: Viish, message: Message, args: string[]) => {
+    if (!args[0]) {
+      return message.reply('Please specify a duration for the timer (e.g., `5m`, `10s`, `2h`).');
+    }
+
+    const timeInput = args[0];
+    const duration = parseTime(timeInput);
+
+    if (!duration) {
+      return message.reply('Invalid time format. Use `s` for seconds, `m` for minutes, or `h` for hours (e.g., `5m`).');
+    }
+
+    message.reply(`⏳ Timer set for ${timeInput}. I'll notify you when it ends!`);
+
+    setTimeout(() => {
+      message.reply(`⏰ Time's up! Your ${timeInput} timer has ended.`);
+    }, duration);
+  }
+};
+
+function parseTime(timeStr: string) {
+  const match = timeStr.match(/^(\d+)([smh])$/);
+
+  if (!match) return null;
+
+  const value = parseInt(match[1] as string, 10);
+  const unit = match[2];
+
+  switch (unit) {
+    case 's':
+      return value * 1000;
+    case 'm':
+      return value * 60 * 1000;
+    case 'h':
+      return value * 60 * 60 * 1000;
+    default:
+      return null;
+  }
+}

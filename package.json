@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "@discordjs/voice": "^0.18.0",
+    "axios": "^1.7.9",
+    "better-sqlite3": "^11.8.1",
+    "discord-selfbot-transcripts": "^0.0.3",
+    "discord.js-selfbot-v13": "^3.6.0",
+    "dokdo-selfbot": "^0.0.4",
+    "qrcode": "^1.5.4"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12"
+  }
+}

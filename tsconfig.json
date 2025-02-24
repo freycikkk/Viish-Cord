@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "rootDir": "./src/",
+    "outDir": "./dist/",
+    "typeRoots": ["node_modules/@types"],
+    "strict": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noUncheckedSideEffectImports": true,
+    "noUncheckedIndexedAccess": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "verbatimModuleSyntax": true,
+    "importHelpers": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "useUnknownInCatchVariables": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
