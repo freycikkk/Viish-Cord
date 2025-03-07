@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import QRCode from 'qrcode';
 import type Viish from '../../base/Client.js';

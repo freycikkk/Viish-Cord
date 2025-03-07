@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
 import type { Event } from '../../interfaces/Events.js';
@@ -18,13 +20,13 @@ export default {
       response: string;
     };
 
-    const names = JSON.parse(responseData.names || '[]');
-    const responses = JSON.parse(responseData.response || '[]');
+    const names = JSON.parse(responseData.names || '[]') as string[];
+    const responses = JSON.parse(responseData.response || '[]') as string[];
     const responseIndex = names.indexOf(responseName);
 
     if (responseIndex === -1) return;
 
-    const response = responses[responseIndex];
+    const response = responses[responseIndex] as string;
     await message.reply({ content: `${response}` });
   }
 } satisfies Event<'messageCreate'>;

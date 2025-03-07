@@ -1,3 +1,5 @@
+/** @format */
+
 import Database from 'better-sqlite3';
 import type Viish from '../base/Client.js';
 

@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message, PermissionResolvable } from 'discord.js-selfbot-v13';
 import type Bumblebee from '../base/Client';
 

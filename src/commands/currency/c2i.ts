@@ -1,6 +1,8 @@
+/** @format */
+
+import axios from 'axios';
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
-import axios from 'axios';
 
 export default {
   name: 'c2i',
@@ -13,7 +15,10 @@ export default {
     const ltcApiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd';
     const usdToInrApiUrl = 'https://api.exchangerate-api.com/v4/latest/USD';
 
-    const [ltcResponse, usdToInrResponse] = await Promise.all([axios.get(ltcApiUrl), axios.get(usdToInrApiUrl)]);
+    const [ltcResponse, usdToInrResponse] = (await Promise.all([axios.get(ltcApiUrl), axios.get(usdToInrApiUrl)])) as [
+      { data: { litecoin: { usd: number } } },
+      { data: { rates: { INR: number } } }
+    ];
 
     const ltcToUsdRate = ltcResponse.data.litecoin.usd;
     const usdToInrRate = usdToInrResponse.data.rates.INR;
@@ -23,5 +28,6 @@ export default {
     await message.reply({
       content: `₹${equivalentInr.toFixed(2)} INR`
     });
+    return;
   }
 };

@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from 'axios';
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
@@ -12,12 +14,13 @@ export default {
 
     const apiUrl = 'https://api.exchangerate-api.com/v4/latest/INR';
 
-    const response = await axios.get(apiUrl);
+    const response = (await axios.get(apiUrl)) as { data: { rates: { USD: number } } };
     const inrToUsdRate = response.data.rates.USD;
     const equivalentUsd = amountInInr * inrToUsdRate;
 
     await message.reply({
       content: `$${equivalentUsd.toFixed(2)} USD`
     });
+    return;
   }
 };

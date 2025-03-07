@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../base/Client.js';
 
@@ -12,8 +14,8 @@ async function handleAddResponse(client: Viish, message: Message, name: string, 
       content: `Please run this command again because earlier database was not set up`
     });
   } else {
-    const names = JSON.parse(data.names || '[]');
-    const responses = JSON.parse(data.response || '[]');
+    const names = JSON.parse(data.names || '[]') as string[];
+    const responses = JSON.parse(data.response || '[]') as string[];
     if (!name) {
       return message.reply({
         content: `Prioritize mentioning the name for auto response.`
@@ -51,8 +53,8 @@ async function handleRemoveResponse(client: Viish, message: Message, name: strin
     response: string;
   };
 
-  const names = JSON.parse(data.names || '[]');
-  const responses = JSON.parse(data.response || '[]');
+  const names = JSON.parse(data.names || '[]') as string[];
+  const responses = JSON.parse(data.response || '[]') as string[];
   const index = names.indexOf(name);
 
   if (index === -1) {
@@ -76,14 +78,14 @@ async function handleRemoveResponse(client: Viish, message: Message, name: strin
 async function handleConfig(client: Viish, message: Message) {
   const data = (await client.database.prepare('SELECT * FROM autoresponder WHERE client_id = ?').get('key')) as { names: string; response: string };
 
-  const names = JSON.parse(data.names || '[]');
+  const names = JSON.parse(data.names || '[]') as string[];
   if (names.length === 0) {
     return message.reply('No autoresponses found in the database.');
   }
 
   const pageItems = names.map((name: string, i: number) => `\`[${i + 1}]\` | \`${name}\``);
 
-  await message.reply({
+  return await message.reply({
     content: `All Auto Responses\n${pageItems.join('\n')}`
   });
 }
@@ -94,4 +96,4 @@ async function handleReset(client: Viish, message: Message) {
   return message.reply(`Auto response database has been reset.`);
 }
 
-export { handleAddResponse, handleRemoveResponse, handleConfig, handleReset };
+export { handleAddResponse, handleConfig, handleRemoveResponse, handleReset };

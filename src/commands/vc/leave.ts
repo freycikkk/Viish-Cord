@@ -1,3 +1,5 @@
+/** @format */
+
 import { getVoiceConnection } from '@discordjs/voice';
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';

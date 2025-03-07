@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message, User } from 'discord.js-selfbot-v13';
 import { Client, Collection } from 'discord.js-selfbot-v13';
 import emojis from '../config/emoji.js';

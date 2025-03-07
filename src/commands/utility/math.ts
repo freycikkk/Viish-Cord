@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
 
@@ -7,7 +9,7 @@ export default {
   run: async (_client: Viish, message: Message, args: string[]) => {
     const input = args.join('');
     try {
-      const result = eval(input);
+      const result = eval(input) as string;
       await message.reply({ content: `${result}` });
     } catch {}
   }

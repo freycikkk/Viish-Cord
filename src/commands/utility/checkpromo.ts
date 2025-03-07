@@ -1,6 +1,8 @@
+/** @format */
+
+import axios from 'axios';
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
-import axios from 'axios';
 
 export default {
   name: 'checkpromo',
@@ -13,7 +15,9 @@ export default {
     const promoCode = promoCodeMatch ? promoCodeMatch[1] : input;
 
     try {
-      const response = await axios.get(`https://discord.com/api/v9/entitlements/gift-codes/${promoCode}?with_application=false&with_subscription_plan=true`);
+      const response = (await axios.get(
+        `https://discord.com/api/v9/entitlements/gift-codes/${promoCode}?with_application=false&with_subscription_plan=true`
+      )) as { data: { subscription_plan: { name: string }; uses: number } };
       const promoData = response.data;
 
       if (promoData.uses > 0) {
@@ -27,5 +31,6 @@ export default {
     } catch (error) {
       await message.reply('**Invalid or expired promotion code.**');
     }
+    return;
   }
 };

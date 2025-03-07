@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from 'axios';
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
@@ -13,7 +15,7 @@ export default {
     const apiUrl = 'https://api.exchangerate-api.com/v4/latest/USD';
 
     try {
-      const response = await axios.get(apiUrl);
+      const response = (await axios.get(apiUrl)) as { data: { rates: { INR: number } } };
       const usdToInrRate = response.data.rates.INR;
       const equivalentInr = amountInUsd * usdToInrRate;
 
@@ -24,5 +26,6 @@ export default {
       console.error(error);
       message.reply('Failed to retrieve exchange rates. Please try again later.');
     }
+    return;
   }
 };

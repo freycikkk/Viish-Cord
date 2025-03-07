@@ -1,3 +1,5 @@
+/** @format */
+
 import type { ClientEvents } from 'discord.js-selfbot-v13';
 import type Bumblebee from '../base/Client';
 

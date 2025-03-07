@@ -1,3 +1,5 @@
+/** @format */
+
 const config = {
   token: ''
 };

@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../base/Client.js';
 
@@ -14,8 +16,8 @@ async function handleAddReact(client: Viish, message: Message, keyword: string, 
       });
     }
 
-    const keywords = JSON.parse(data.keyword || '[]');
-    const emojis = JSON.parse(data.emoji || '[]');
+    const keywords = JSON.parse(data.keyword || '[]') as string[];
+    const emojis = JSON.parse(data.emoji || '[]') as string[];
 
     if (!keyword) {
       return message.reply({
@@ -41,7 +43,7 @@ async function handleAddReact(client: Viish, message: Message, keyword: string, 
     keywords.push(keyword);
     emojis.push(emoji);
 
-    await client.database
+    client.database
       .prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?')
       .run(JSON.stringify(keywords), JSON.stringify(emojis), 'key');
 
@@ -57,8 +59,8 @@ async function handleRemoveReact(client: Viish, message: Message, keyword: strin
   try {
     const data = (await client.database.prepare('SELECT * FROM autoreact WHERE client_id = ?').get('key')) as { keyword: string; emoji: string };
 
-    const keywords = JSON.parse(data.keyword || '[]');
-    const emojis = JSON.parse(data.emoji || '[]');
+    const keywords = JSON.parse(data.keyword || '[]') as string[];
+    const emojis = JSON.parse(data.emoji || '[]') as string[];
     const index = keywords.indexOf(keyword);
 
     if (index === -1) {
@@ -70,7 +72,7 @@ async function handleRemoveReact(client: Viish, message: Message, keyword: strin
     keywords.splice(index, 1);
     emojis.splice(index, 1);
 
-    await client.database
+    client.database
       .prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?')
       .run(JSON.stringify(keywords), JSON.stringify(emojis), 'key');
 
@@ -86,7 +88,7 @@ async function handleConfig(client: Viish, message: Message) {
   try {
     const data = (await client.database.prepare('SELECT * FROM autoreact WHERE client_id = ?').get('key')) as { keyword: string; emoji: string };
 
-    const keywords = JSON.parse(data.keyword || '[]');
+    const keywords = JSON.parse(data.keyword || '[]') as string[];
 
     if (keywords.length === 0) {
       return message.reply(`No auto-reactions found.`);
@@ -104,9 +106,7 @@ async function handleConfig(client: Viish, message: Message) {
 
 async function handleReset(client: Viish, message: Message) {
   try {
-    await client.database
-      .prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?')
-      .run(JSON.stringify([]), JSON.stringify([]), 'key');
+    client.database.prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?').run(JSON.stringify([]), JSON.stringify([]), 'key');
 
     return message.reply(`The auto-reaction database has been reset.`);
   } catch (err) {
@@ -114,4 +114,4 @@ async function handleReset(client: Viish, message: Message) {
   }
 }
 
-export { handleAddReact, handleRemoveReact, handleConfig, handleReset };
+export { handleAddReact, handleConfig, handleRemoveReact, handleReset };

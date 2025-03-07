@@ -1,10 +1,12 @@
-import type { Message } from 'discord.js-selfbot-v13';
+/** @format */
+
+import type { GuildMember, Message, User } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
 
 export default {
   name: 'avatar',
   run: async (client: Viish, message: Message, args: string[]) => {
-    let target;
+    let target: User | GuildMember | undefined;
 
     if (args[0]) {
       target = message.mentions.users.first() || client.users.cache.get(args[0]);

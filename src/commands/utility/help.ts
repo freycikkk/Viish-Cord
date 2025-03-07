@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
 
@@ -119,14 +121,14 @@ ${client.emoji.util.vouch} **[VOUCH]**
       case 'afk':
         await message.channel.send({ content: afkPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
       case 'ar':
         await message.channel.send({ content: arPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
@@ -134,7 +136,7 @@ ${client.emoji.util.vouch} **[VOUCH]**
       case 'money':
         await message.channel.send({ content: moneyPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
@@ -142,28 +144,28 @@ ${client.emoji.util.vouch} **[VOUCH]**
       case 'admin':
         await message.channel.send({ content: modPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
       case 'utility':
         await message.channel.send({ content: utilityPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
       case 'vc':
         await message.channel.send({ content: vcPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
       case 'vouch':
         await message.channel.send({ content: vouchPage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
@@ -245,19 +247,19 @@ ${client.emoji.util.vouch} **[VOUCH]**
 `;
         await message.channel.send({ content: page1 }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         await message.channel.send({ content: page2 }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;
       default:
         await message.channel.send({ content: homePage }).then((sentMessage) => {
           setTimeout(() => {
-            sentMessage.delete().catch((err) => console.error('Failed to delete message:', err));
+            sentMessage.delete().catch((err: Error) => console.error('Failed to delete message:', err));
           }, 120000);
         });
         break;

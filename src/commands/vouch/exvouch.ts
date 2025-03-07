@@ -1,3 +1,5 @@
+/** @format */
+
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
 
@@ -7,7 +9,7 @@ export default {
     try {
       const payment_amount = args[0] as string;
       const payment_currency = args[1] as string;
-      let money;
+      let money: string | undefined;
 
       const currencySymbols: Record<string, string> = {
         usd: '$',
@@ -29,5 +31,6 @@ export default {
       await message.channel.send('**PLEASE VOUCH ME HERE**');
       await message.channel.send(`\`+vouch ${User_Id} LEGIT | ${product} [${money}${payment_amount}] • TYSM\``);
     } catch {}
+    return;
   }
 };
