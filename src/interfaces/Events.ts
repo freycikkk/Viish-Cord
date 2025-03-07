@@ -1,5 +1,5 @@
 import type { ClientEvents } from 'discord.js-selfbot-v13';
-import Bumblebee from '../base/Client';
+import type Bumblebee from '../base/Client';
 
 export interface Event<T extends keyof ClientEvents> {
   name: T;

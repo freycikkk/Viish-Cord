@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "@discordjs/voice": "^0.18.0",
-    "axios": "^1.7.9",
+    "axios": "^1.8.2",
     "better-sqlite3": "^11.8.1",
     "discord-selfbot-transcripts": "^0.0.3",
     "discord.js-selfbot-v13": "^3.6.0",
@@ -11,6 +11,11 @@
   "type": "module",
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
-    "@types/qrcode": "^1.5.5"
+    "@types/qrcode": "^1.5.5",
+    "@typescript-eslint/eslint-plugin": "^8.26.0",
+    "@typescript-eslint/parser": "^8.26.0",
+    "eslint": "^9.21.0",
+    "eslint-define-config": "^2.1.0",
+    "typescript-coverage-report": "^1.1.1"
   }
 }

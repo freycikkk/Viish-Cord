@@ -1,5 +1,5 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../base/Client.js';
+import type { Message } from 'discord.js-selfbot-v13';
+import type Viish from '../base/Client.js';
 
 async function handleAddTask(client: Viish, message: Message, task: string) {
   const data = (await client.database.prepare('SELECT * FROM todos WHERE user_id = ?').get('key')) as { tasks: string };

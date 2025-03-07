@@ -1,5 +1,5 @@
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../base/Client.js';
+import type { Message } from 'discord.js-selfbot-v13';
+import type Viish from '../base/Client.js';
 
 async function handleAddResponse(client: Viish, message: Message, name: string, response: string) {
   const data = (await client.database.prepare('SELECT * FROM autoresponder WHERE client_id = ?').get('key')) as { names: string; response: string };

@@ -1,21 +1,29 @@
-/** @format */
+import tseslint from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import { defineConfig } from 'eslint-define-config';
 
-import globals from 'globals';
-import jslint from '@eslint/js';
-import tslint from 'typescript-eslint';
-
-/**
- * @type {import('eslint').Linter.Config[]}
- */
-export default [
-  { files: ['{src}/**/*.{ts}'] },
-  { linterOptions: { noInlineConfig: true } },
-  { languageOptions: { globals: globals.node } },
-  jslint.configs.recommended,
-  ...tslint.configs.recommended,
+export default defineConfig([
   {
+    files: ['src/**/*.ts'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        project: './tsconfig.json'
+      }
+    },
+    plugins: {
+      '@typescript-eslint': tseslint
+    },
     rules: {
-      '@typescript-eslint/no-explicit-any': 'off'
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        {
+          prefer: 'type-imports',
+          fixStyle: 'separate-type-imports'
+        }
+      ]
     }
   }
-];
+]);
+
+// npx eslint --config ./eslint.config.js --fix src/

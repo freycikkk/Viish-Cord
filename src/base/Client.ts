@@ -1,4 +1,5 @@
-import { Client, Collection, Message, User } from 'discord.js-selfbot-v13';
+import type { Message, User } from 'discord.js-selfbot-v13';
+import { Client, Collection } from 'discord.js-selfbot-v13';
 import emojis from '../config/emoji.js';
 import { clientHandler } from '../structure/clientHandler.js';
 import { clientDatabase } from '../structure/clientDatabase.js';

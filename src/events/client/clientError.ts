@@ -1,4 +1,4 @@
-import Viish from '../../base/Client.js';
+import type Viish from '../../base/Client.js';
 import type { Event } from '../../interfaces/Events.js';
 
 export default {

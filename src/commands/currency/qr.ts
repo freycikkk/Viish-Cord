@@ -1,6 +1,6 @@
-import { Message } from 'discord.js-selfbot-v13';
+import type { Message } from 'discord.js-selfbot-v13';
 import QRCode from 'qrcode';
-import Viish from '../../base/Client.js';
+import type Viish from '../../base/Client.js';
 
 export default {
   name: 'qr',

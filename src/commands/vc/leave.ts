@@ -1,6 +1,6 @@
 import { getVoiceConnection } from '@discordjs/voice';
-import { Message } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
+import type { Message } from 'discord.js-selfbot-v13';
+import type Viish from '../../base/Client.js';
 
 export default {
   name: 'leave',

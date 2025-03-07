@@ -1,5 +1,5 @@
 import type { Message, PermissionResolvable } from 'discord.js-selfbot-v13';
-import Bumblebee from '../base/Client';
+import type Bumblebee from '../base/Client';
 
 export interface Command {
   name: string;

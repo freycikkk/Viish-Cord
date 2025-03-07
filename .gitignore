@@ -1,2 +1,7 @@
 node_modules
+dist
 tsconfig.tsbuildinfo
+eslint.config.js
+dist.rar
+coverage-ts
+type-coverage-report.txt

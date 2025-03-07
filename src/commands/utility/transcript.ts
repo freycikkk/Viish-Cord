@@ -1,5 +1,5 @@
-import { Message, TextChannel } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
+import type { Message, TextChannel } from 'discord.js-selfbot-v13';
+import type Viish from '../../base/Client.js';
 import transcript from 'discord-selfbot-transcripts';
 
 export default {

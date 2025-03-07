@@ -1,5 +1,5 @@
-import { Message, User } from 'discord.js-selfbot-v13';
-import Viish from '../../base/Client.js';
+import type { Message, User } from 'discord.js-selfbot-v13';
+import type Viish from '../../base/Client.js';
 import type { Event } from '../../interfaces/Events.js';
 
 export default {
