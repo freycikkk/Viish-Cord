@@ -4,7 +4,7 @@ export default {
     run: async (_client, message, args) => {
         const days = args[0] || 1;
         const apiUrl = `https://api.coingecko.com/api/v3/coins/litecoin/market_chart?vs_currency=usd&days=${days}`;
-        const response = await axios.get(apiUrl);
+        const response = (await axios.get(apiUrl));
         const prices = response.data.prices;
         const firstPrice = prices[0][1];
         const lastPrice = prices[prices.length - 1][1];

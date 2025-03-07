@@ -22,5 +22,6 @@ export default {
 
     await client.user?.setHypeSquad(hypeSquadType);
     await message.react('✅');
+    return;
   }
 };

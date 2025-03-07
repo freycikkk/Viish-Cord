@@ -14,5 +14,6 @@ export default {
       bypassOnboarding: true,
       bypassVerify: true
     });
+    return;
   }
 };

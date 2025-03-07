@@ -1,6 +1,6 @@
 /** @format */
 
-import { ClientEvents } from 'discord.js-selfbot-v13';
+import type { ClientEvents } from 'discord.js-selfbot-v13';
 import { readdirSync } from 'node:fs';
 import type Bumblebee from '../base/Client';
 import type { Event } from '../interfaces/Events';

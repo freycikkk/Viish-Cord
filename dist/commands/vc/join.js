@@ -15,5 +15,6 @@ export default {
             adapterCreator: channel.guild.voiceAdapterCreator
         });
         message.reply('I have joined your provided voice channel!');
+        return;
     }
 };

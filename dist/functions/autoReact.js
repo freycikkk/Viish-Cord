@@ -33,7 +33,7 @@ async function handleAddReact(client, message, keyword, emoji) {
         }
         keywords.push(keyword);
         emojis.push(emoji);
-        await client.database
+        client.database
             .prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?')
             .run(JSON.stringify(keywords), JSON.stringify(emojis), 'key');
         return message.reply({
@@ -57,7 +57,7 @@ async function handleRemoveReact(client, message, keyword) {
         }
         keywords.splice(index, 1);
         emojis.splice(index, 1);
-        await client.database
+        client.database
             .prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?')
             .run(JSON.stringify(keywords), JSON.stringify(emojis), 'key');
         return message.reply({
@@ -86,13 +86,11 @@ async function handleConfig(client, message) {
 }
 async function handleReset(client, message) {
     try {
-        await client.database
-            .prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?')
-            .run(JSON.stringify([]), JSON.stringify([]), 'key');
+        client.database.prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?').run(JSON.stringify([]), JSON.stringify([]), 'key');
         return message.reply(`The auto-reaction database has been reset.`);
     }
     catch (err) {
         return message.reply(`An error occurred while resetting auto-reactions.`);
     }
 }
-export { handleAddReact, handleRemoveReact, handleConfig, handleReset };
+export { handleAddReact, handleConfig, handleRemoveReact, handleReset };

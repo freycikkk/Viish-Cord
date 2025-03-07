@@ -13,6 +13,7 @@ export default {
         setTimeout(() => {
             message.reply(`⏰ Time's up! Your ${timeInput} timer has ended.`);
         }, duration);
+        return;
     }
 };
 function parseTime(timeStr) {

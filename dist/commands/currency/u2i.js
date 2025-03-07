@@ -8,7 +8,7 @@ export default {
         }
         const apiUrl = 'https://api.exchangerate-api.com/v4/latest/USD';
         try {
-            const response = await axios.get(apiUrl);
+            const response = (await axios.get(apiUrl));
             const usdToInrRate = response.data.rates.INR;
             const equivalentInr = amountInUsd * usdToInrRate;
             await message.reply({
@@ -19,5 +19,6 @@ export default {
             console.error(error);
             message.reply('Failed to retrieve exchange rates. Please try again later.');
         }
+        return;
     }
 };

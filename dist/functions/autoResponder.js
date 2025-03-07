@@ -71,7 +71,7 @@ async function handleConfig(client, message) {
         return message.reply('No autoresponses found in the database.');
     }
     const pageItems = names.map((name, i) => `\`[${i + 1}]\` | \`${name}\``);
-    await message.reply({
+    return await message.reply({
         content: `All Auto Responses\n${pageItems.join('\n')}`
     });
 }
@@ -79,4 +79,4 @@ async function handleReset(client, message) {
     client.database.prepare(`UPDATE autoresponder SET names = ?, response = ? WHERE client_id = ?`).run(JSON.stringify([]), JSON.stringify([]), 'key');
     return message.reply(`Auto response database has been reset.`);
 }
-export { handleAddResponse, handleRemoveResponse, handleConfig, handleReset };
+export { handleAddResponse, handleConfig, handleRemoveResponse, handleReset };

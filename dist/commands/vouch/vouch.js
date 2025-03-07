@@ -24,5 +24,6 @@ export default {
             await message.channel.send(`\`+vouch ${User_Id} LEGIT | ${product} [${money}${payment_amount}] • TYSM\``);
         }
         catch { }
+        return;
     }
 };

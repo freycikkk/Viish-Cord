@@ -11,5 +11,6 @@ export default {
             authorize: true
         });
         await message.react('✅');
+        return;
     }
 };

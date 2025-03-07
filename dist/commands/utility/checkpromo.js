@@ -9,7 +9,7 @@ export default {
         const promoCodeMatch = input.match(/\/promotions\/([a-zA-Z0-9]+)/);
         const promoCode = promoCodeMatch ? promoCodeMatch[1] : input;
         try {
-            const response = await axios.get(`https://discord.com/api/v9/entitlements/gift-codes/${promoCode}?with_application=false&with_subscription_plan=true`);
+            const response = (await axios.get(`https://discord.com/api/v9/entitlements/gift-codes/${promoCode}?with_application=false&with_subscription_plan=true`));
             const promoData = response.data;
             if (promoData.uses > 0) {
                 return message.reply('**This promo code has already been used.**');
@@ -21,5 +21,6 @@ export default {
         catch (error) {
             await message.reply('**Invalid or expired promotion code.**');
         }
+        return;
     }
 };

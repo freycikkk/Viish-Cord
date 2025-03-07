@@ -8,7 +8,7 @@ export default {
         }
         const apiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd';
         try {
-            const response = await axios.get(apiUrl);
+            const response = (await axios.get(apiUrl));
             const ltcPriceInUsd = response.data.litecoin.usd;
             const equivalentLtc = amountInUsd / ltcPriceInUsd;
             await message.reply({
@@ -16,5 +16,6 @@ export default {
             });
         }
         catch { }
+        return;
     }
 };

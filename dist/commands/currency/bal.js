@@ -6,7 +6,7 @@ export default {
         const address = args[0] || client.address;
         const balanceApiUrl = `https://api.blockcypher.com/v1/ltc/main/addrs/${address}`;
         const rateApiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd,eur,inr`;
-        const [balanceResponse, rateResponse] = await Promise.all([axios.get(balanceApiUrl), axios.get(rateApiUrl)]);
+        const [balanceResponse, rateResponse] = (await Promise.all([axios.get(balanceApiUrl), axios.get(rateApiUrl)]));
         const balanceData = balanceResponse.data;
         const rates = rateResponse.data.litecoin;
         const confirmed = balanceData.balance / 1e8;

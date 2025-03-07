@@ -24,5 +24,6 @@ export default {
     });
 
     message.reply('I have joined your provided voice channel!');
+    return;
   }
 };

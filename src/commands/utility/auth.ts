@@ -19,5 +19,6 @@ export default {
     });
 
     await message.react('✅');
+    return;
   }
 };

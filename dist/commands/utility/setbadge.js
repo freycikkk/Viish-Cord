@@ -12,5 +12,6 @@ export default {
         const hypeSquadType = hypeSquadTypes[badgenumber] ?? 0;
         await client.user?.setHypeSquad(hypeSquadType);
         await message.react('✅');
+        return;
     }
 };

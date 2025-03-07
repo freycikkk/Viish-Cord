@@ -8,12 +8,13 @@ export default {
         }
         const ltcApiUrl = 'https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd';
         const usdToInrApiUrl = 'https://api.exchangerate-api.com/v4/latest/USD';
-        const [ltcResponse, usdToInrResponse] = await Promise.all([axios.get(ltcApiUrl), axios.get(usdToInrApiUrl)]);
+        const [ltcResponse, usdToInrResponse] = (await Promise.all([axios.get(ltcApiUrl), axios.get(usdToInrApiUrl)]));
         const ltcToUsdRate = ltcResponse.data.litecoin.usd;
         const usdToInrRate = usdToInrResponse.data.rates.INR;
         const equivalentInr = amountInLitecoin * ltcToUsdRate * usdToInrRate;
         await message.reply({
             content: `₹${equivalentInr.toFixed(2)} INR`
         });
+        return;
     }
 };

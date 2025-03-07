@@ -1,7 +1,7 @@
 async function handleAddTask(client, message, task) {
     const data = (await client.database.prepare('SELECT * FROM todos WHERE user_id = ?').get('key'));
     if (!data) {
-        await client.database.prepare('INSERT INTO todos (user_id, tasks) VALUES (?, ?)').run('key', JSON.stringify([]));
+        client.database.prepare('INSERT INTO todos (user_id, tasks) VALUES (?, ?)').run('key', JSON.stringify([]));
         return message.reply({
             content: `Database was not set up. Please try adding the task again.`
         });
@@ -20,7 +20,7 @@ async function handleAddTask(client, message, task) {
         }
         else {
             tasks.push(task);
-            await client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify(tasks), 'key');
+            client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify(tasks), 'key');
             return message.reply({
                 content: `Added task: "${task}".`
             });
@@ -36,7 +36,7 @@ async function handleRemoveTask(client, message, index) {
         });
     }
     const removedTask = tasks.splice(index - 1, 1);
-    await client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify(tasks), 'key');
+    client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify(tasks), 'key');
     return message.reply({
         content: `Removed task: "${removedTask}".`
     });
@@ -53,7 +53,7 @@ async function handleViewTasks(client, message) {
     });
 }
 async function handleResetTasks(client, message) {
-    await client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify([]), 'key');
+    client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify([]), 'key');
     return message.reply('Your to-do list has been reset.');
 }
-export { handleAddTask, handleRemoveTask, handleViewTasks, handleResetTasks };
+export { handleAddTask, handleRemoveTask, handleResetTasks, handleViewTasks };
