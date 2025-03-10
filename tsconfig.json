@@ -110,6 +110,7 @@
   },
   "exclude": [
     "node_modules", // Exclude the node_modules directory from type-checking
-    "dokdo" // Exclude the dokdo directory from type-checking
+    "dokdo", // Exclude the dokdo directory from type-checking,
+    "auth" // Exclude the auth directory from type-checking,
   ]
 }
