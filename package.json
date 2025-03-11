@@ -4,18 +4,24 @@
     "axios": "^1.8.2",
     "better-sqlite3": "^11.8.1",
     "discord-selfbot-transcripts": "^0.0.3",
+    "discord.js": "^14.18.0",
     "discord.js-selfbot-v13": "^3.6.0",
     "dokdo-selfbot": "^0.0.4",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
     "qrcode": "^1.5.4"
   },
   "type": "module",
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.12",
+    "@types/express": "^5.0.0",
     "@types/qrcode": "^1.5.5",
     "@typescript-eslint/eslint-plugin": "^8.26.0",
     "@typescript-eslint/parser": "^8.26.0",
     "eslint": "^9.21.0",
     "eslint-define-config": "^2.1.0",
+    "ts-node": "^10.9.2",
     "typescript-coverage-report": "^1.1.1"
   }
 }

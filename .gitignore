@@ -6,3 +6,5 @@ coverage-ts
 type-coverage-report.txt
 dist
 auth
+tokens.txt
+auth.js
