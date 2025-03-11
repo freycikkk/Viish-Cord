@@ -1,14 +1,14 @@
 /** @format */
 
-import type { Message, User } from 'discord.js-selfbot-v13';
-import { Client, Collection } from 'discord.js-selfbot-v13';
-import emojis from '../config/emoji.js';
-import { clientHandler } from '../structure/clientHandler.js';
-import { clientDatabase } from '../structure/clientDatabase.js';
-import config from '../config/config.js';
 import type { Database } from 'better-sqlite3';
+import type { Message } from 'discord.js-selfbot-v13';
+import { Client, Collection } from 'discord.js-selfbot-v13';
+import config from '../config/config.js';
+import emojis from '../config/emoji.js';
 import type { Command } from '../interfaces/Commands.js';
 import type { Event } from '../interfaces/Events.js';
+import { clientDatabase } from '../structure/clientDatabase.js';
+import { clientHandler } from '../structure/clientHandler.js';
 
 export default class Viish extends Client {
   database!: Database;
@@ -30,10 +30,6 @@ export default class Viish extends Client {
         messages: {
           interval: 300,
           filter: () => (message: Message) => message.id !== this.user?.id
-        },
-        users: {
-          interval: 300,
-          filter: () => (user: User) => user.id !== this.user?.id
         }
       }
     });
