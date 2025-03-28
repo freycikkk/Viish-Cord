@@ -1,11 +1,10 @@
 /** @format */
 
-import type Viish from '../../base/Client.js';
 import type { Event } from '../../interfaces/Events.js';
 
 export default {
   name: 'error',
-  run: async (_client: Viish, error: Error) => {
+  async run(_client, error) {
     console.log(error);
   }
 } satisfies Event<'error'>;

@@ -1,12 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'help',
   aliases: ['h'],
-  run: async (client: Viish, message: Message, args: string[]) => {
+  async run(client, message, args) {
     const homePage = `# ${client.emoji.util.viish} Viish Cord ${client.emoji.util.viish}
 -# .help <module> to see commands.
 -# .help all to see all commands.
@@ -265,4 +264,4 @@ ${client.emoji.util.vouch} **[VOUCH]**
         break;
     }
   }
-};
+} satisfies Command;

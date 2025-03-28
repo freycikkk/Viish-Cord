@@ -1,14 +1,10 @@
 /** @format */
 
-import type { Message, PermissionResolvable } from 'discord.js-selfbot-v13';
-import type Bumblebee from '../base/Client';
+import type { Message } from 'discord.js-selfbot-v13';
+import type Viish from '../base/Client';
 
 export interface Command {
   name: string;
   aliases: string[];
-  UserPerms: PermissionResolvable[];
-  BotPerms: PermissionResolvable[];
-  aboveRole: boolean;
-  ownerOnly: boolean;
-  run(client: Bumblebee, message: Message, args: string[]): Promise<unknown>;
+  run(client: Viish, message: Message<true>, args: string[]): Promise<unknown>;
 }

@@ -1,11 +1,12 @@
 /** @format */
 
-import type { GuildMember, Message, User } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { GuildMember, User } from 'discord.js-selfbot-v13';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'banner',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     let target: User | GuildMember | undefined;
 
     if (args[0]) {
@@ -28,4 +29,4 @@ export default {
       content: `${bannerUrl}`
     });
   }
-};
+} satisfies Command;

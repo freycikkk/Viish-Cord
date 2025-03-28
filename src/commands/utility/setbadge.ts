@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'setbadge',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     if (!args[0]) {
       return message.reply('Please provide a valid badge field.');
     }
@@ -24,4 +24,4 @@ export default {
     await message.react('✅');
     return;
   }
-};
+} satisfies Command;

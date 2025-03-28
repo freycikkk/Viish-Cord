@@ -3,7 +3,7 @@
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../base/Client.js';
 
-async function handleAddResponse(client: Viish, message: Message, name: string, response: string) {
+async function handleAddResponse(client: Viish, message: Message<true>, name: string, response: string) {
   const data = (await client.database.prepare('SELECT * FROM autoresponder WHERE client_id = ?').get('key')) as { names: string; response: string };
 
   if (!data) {
@@ -47,7 +47,7 @@ async function handleAddResponse(client: Viish, message: Message, name: string, 
   }
 }
 
-async function handleRemoveResponse(client: Viish, message: Message, name: string) {
+async function handleRemoveResponse(client: Viish, message: Message<true>, name: string) {
   const data = client.database.prepare(`SELECT names, response FROM autoresponder WHERE client_id = ?`).get('key') as {
     names: string;
     response: string;
@@ -75,7 +75,7 @@ async function handleRemoveResponse(client: Viish, message: Message, name: strin
   });
 }
 
-async function handleConfig(client: Viish, message: Message) {
+async function handleConfig(client: Viish, message: Message<true>) {
   const data = (await client.database.prepare('SELECT * FROM autoresponder WHERE client_id = ?').get('key')) as { names: string; response: string };
 
   const names = JSON.parse(data.names || '[]') as string[];
@@ -90,7 +90,7 @@ async function handleConfig(client: Viish, message: Message) {
   });
 }
 
-async function handleReset(client: Viish, message: Message) {
+async function handleReset(client: Viish, message: Message<true>) {
   client.database.prepare(`UPDATE autoresponder SET names = ?, response = ? WHERE client_id = ?`).run(JSON.stringify([]), JSON.stringify([]), 'key');
 
   return message.reply(`Auto response database has been reset.`);

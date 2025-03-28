@@ -1,7 +1,6 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 function wait(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -9,7 +8,8 @@ function wait(ms: number) {
 
 export default {
   name: 'delete',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     let limit = parseInt(args[0] as string, 10) || 10;
     if (isNaN(limit) || limit < 1 || limit > 100) return;
     try {
@@ -24,4 +24,4 @@ export default {
       }
     } catch {}
   }
-};
+} satisfies Command;

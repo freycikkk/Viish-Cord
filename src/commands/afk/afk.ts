@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'afk',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     const userId = message.author.id;
     const afkReason = args.join(' ') || "I'm AFK ;-;";
     const afkTime = Date.now();
@@ -26,4 +26,4 @@ export default {
       });
     }
   }
-};
+} satisfies Command;

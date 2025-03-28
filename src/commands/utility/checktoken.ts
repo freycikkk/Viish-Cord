@@ -1,12 +1,12 @@
 /** @format */
 
 import axios, { AxiosError } from 'axios';
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'checktoken',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     const token = args[0];
     if (!token) {
       return message.reply('**Please provide a token to check.**');
@@ -32,4 +32,4 @@ export default {
     }
     return;
   }
-};
+} satisfies Command;

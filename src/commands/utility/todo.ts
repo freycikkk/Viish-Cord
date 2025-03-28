@@ -1,12 +1,12 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
-import { handleAddTask, handleRemoveTask, handleViewTasks, handleResetTasks } from '../../functions/todo.js';
+import { handleAddTask, handleRemoveTask, handleResetTasks, handleViewTasks } from '../../functions/todo.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'todo',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     const task = args.slice(1).join(' ');
     switch (args[0]) {
       case 'add':
@@ -30,4 +30,4 @@ export default {
         break;
     }
   }
-};
+} satisfies Command;

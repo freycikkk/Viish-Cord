@@ -1,12 +1,12 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
 import QRCode from 'qrcode';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'qr',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     const defaultUpiId = 'swastik1337@fam';
     const defaultLtcAddress = 'ltc1q3m887hunymwfavs00srm6qkdgfput42fufztnr';
 
@@ -42,4 +42,4 @@ export default {
       message.reply('**Please provide a valid command. Example: `.qr ltc <amount> <address>` or `.qr upi <amount> <upi_id>`**');
     }
   }
-};
+} satisfies Command;

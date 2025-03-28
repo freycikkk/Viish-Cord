@@ -1,12 +1,13 @@
 /** @format */
 
 import transcript from 'discord-selfbot-transcripts';
-import type { Message, TextChannel } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { TextChannel } from 'discord.js-selfbot-v13';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'transcript',
-  run: async (_client: Viish, message: Message, _args: string[]) => {
+  aliases: [],
+  async run(_client, message, _args) {
     await message.reply({
       files: [
         // @ts-expect-error
@@ -16,4 +17,4 @@ export default {
       ]
     });
   }
-};
+} satisfies Command;

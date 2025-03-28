@@ -1,13 +1,12 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
-import { handleAddResponse, handleRemoveResponse, handleConfig, handleReset } from '../../functions/autoResponder.js';
+import { handleAddResponse, handleConfig, handleRemoveResponse, handleReset } from '../../functions/autoResponder.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'autoresponder',
   aliases: ['ar'],
-  run: async (client: Viish, message: Message, args: string[]) => {
+  async run(client, message, args) {
     const name = args[1];
     const response = args.slice(2).join(' ');
     switch (args[0]) {
@@ -32,4 +31,4 @@ export default {
         break;
     }
   }
-};
+} satisfies Command;

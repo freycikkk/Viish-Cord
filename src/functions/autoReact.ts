@@ -3,7 +3,7 @@
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../base/Client.js';
 
-async function handleAddReact(client: Viish, message: Message, keyword: string, emoji: string) {
+async function handleAddReact(client: Viish, message: Message<true>, keyword: string, emoji: string) {
   try {
     const data = (await client.database.prepare('SELECT * FROM autoreact WHERE client_id = ?').get('key')) as { keyword: string; emoji: string };
 
@@ -55,7 +55,7 @@ async function handleAddReact(client: Viish, message: Message, keyword: string, 
   }
 }
 
-async function handleRemoveReact(client: Viish, message: Message, keyword: string) {
+async function handleRemoveReact(client: Viish, message: Message<true>, keyword: string) {
   try {
     const data = (await client.database.prepare('SELECT * FROM autoreact WHERE client_id = ?').get('key')) as { keyword: string; emoji: string };
 
@@ -84,7 +84,7 @@ async function handleRemoveReact(client: Viish, message: Message, keyword: strin
   }
 }
 
-async function handleConfig(client: Viish, message: Message) {
+async function handleConfig(client: Viish, message: Message<true>) {
   try {
     const data = (await client.database.prepare('SELECT * FROM autoreact WHERE client_id = ?').get('key')) as { keyword: string; emoji: string };
 
@@ -104,7 +104,7 @@ async function handleConfig(client: Viish, message: Message) {
   }
 }
 
-async function handleReset(client: Viish, message: Message) {
+async function handleReset(client: Viish, message: Message<true>) {
   try {
     client.database.prepare('UPDATE autoreact SET keyword = ?, emoji = ? WHERE client_id = ?').run(JSON.stringify([]), JSON.stringify([]), 'key');
 

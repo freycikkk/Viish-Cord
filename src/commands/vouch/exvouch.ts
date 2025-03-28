@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'exvouch',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     try {
       const payment_amount = args[0] as string;
       const payment_currency = args[1] as string;
@@ -33,4 +33,4 @@ export default {
     } catch {}
     return;
   }
-};
+} satisfies Command;

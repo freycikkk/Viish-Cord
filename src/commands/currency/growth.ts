@@ -1,12 +1,12 @@
 /** @format */
 
 import axios from 'axios';
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'growth',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     const days = args[0] || 1;
     const apiUrl = `https://api.coingecko.com/api/v3/coins/litecoin/market_chart?vs_currency=usd&days=${days}`;
 
@@ -25,4 +25,4 @@ export default {
       content: `Litecoin (LTC) has gone ${trend} by ${growth} over the last ${days} day(s).`
     });
   }
-};
+} satisfies Command;

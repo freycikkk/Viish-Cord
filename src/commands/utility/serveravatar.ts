@@ -1,12 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'serveravatar',
   aliases: ['servericon'],
-  run: async (_client: Viish, message: Message, _args: string[]) => {
+  async run(_client, message, _args) {
     if (!message.guild) {
       return message.reply('This command must be run in a server.');
     }
@@ -18,4 +17,4 @@ export default {
       content: `${avatarUrl}`
     });
   }
-};
+} satisfies Command;

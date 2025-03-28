@@ -1,13 +1,12 @@
 /** @format */
 
 import axios from 'axios';
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'checkpromo',
   aliases: ['checkcode', 'promocheck'],
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  async run(_client, message, args) {
     const input = args[0];
     if (!input) return message.reply('**Please provide a promotion code or URL to check.**');
 
@@ -33,4 +32,4 @@ export default {
     }
     return;
   }
-};
+} satisfies Command;

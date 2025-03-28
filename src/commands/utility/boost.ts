@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'boost',
-  run: async (client: Viish, message: Message, _args: string[]) => {
+  aliases: [],
+  async run(client, message, _args) {
     if (!message.guild) {
       return message.reply('This command must be run in a server.');
     }
@@ -19,4 +19,4 @@ export default {
     });
     return message.reply(`Successfully boosted ${message.guild.name} 2 time!`);
   }
-};
+} satisfies Command;

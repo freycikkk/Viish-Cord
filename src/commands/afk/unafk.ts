@@ -1,12 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'unafk',
-  voteOnly: false,
-  run: async (client: Viish, message: Message, _args: string[]) => {
+  aliases: [],
+  async run(client, message, _args) {
     const authorAfkData = client.database.prepare('SELECT * FROM afk WHERE user_id = ?').get(message.author.id) as { time: number; reason: string };
 
     if (authorAfkData) {
@@ -24,7 +23,7 @@ export default {
       });
     }
   }
-};
+} satisfies Command;
 
 function formatDuration(seconds: number) {
   const days = Math.floor(seconds / 86400);

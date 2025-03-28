@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'timer',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     if (!args[0]) {
       return message.reply('Please specify a duration for the timer (e.g., `5m`, `10s`, `2h`).');
     }
@@ -24,7 +24,7 @@ export default {
     }, duration);
     return;
   }
-};
+} satisfies Command;
 
 function parseTime(timeStr: string) {
   const match = timeStr.match(/^(\d+)([smh])$/);

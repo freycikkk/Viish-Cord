@@ -4,7 +4,7 @@ import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../../base/Client.js';
 import type { Event } from '../../interfaces/Events.js';
 
-async function handleCommand(client: Viish, message: Message, args: string[]) {
+async function handleCommand(client: Viish, message: Message<true>, args: string[]) {
   const cmd = args.shift()?.toLowerCase();
   if (cmd?.length == 0) return;
 
@@ -21,7 +21,7 @@ async function handleCommand(client: Viish, message: Message, args: string[]) {
 
 export default {
   name: 'messageCreate',
-  run: async (client: Viish, message: Message) => {
+  async run(client, message: Message<true>) {
     client.database.prepare(`CREATE TABLE IF NOT EXISTS afk (user_id TEXT PRIMARY KEY, reason TEXT, time TEXT)`).run();
     client.database.prepare(`CREATE TABLE IF NOT EXISTS todos (user_id TEXT PRIMARY KEY, tasks TEXT)`).run();
     client.database.prepare(`CREATE TABLE IF NOT EXISTS autoresponder (client_id TEXT PRIMARY KEY, names TEXT, response TEXT)`).run();

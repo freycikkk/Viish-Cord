@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'profit',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     const profitQuantity = parseInt(args[0] as string, 10);
 
     const data = (await client.database.prepare('SELECT profits FROM profits WHERE profit_type = ?').get('profit')) as { profits: number };
@@ -39,4 +39,4 @@ export default {
       });
     }
   }
-};
+} satisfies Command;

@@ -1,13 +1,13 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'ping',
-  run: async (client: Viish, message: Message, _args: string[]) => {
+  aliases: [],
+  async run(client, message, _args) {
     await message.reply({
       content: `${client.ws.ping}ms`
     });
   }
-};
+} satisfies Command;

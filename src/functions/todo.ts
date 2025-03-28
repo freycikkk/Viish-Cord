@@ -3,7 +3,7 @@
 import type { Message } from 'discord.js-selfbot-v13';
 import type Viish from '../base/Client.js';
 
-async function handleAddTask(client: Viish, message: Message, task: string) {
+async function handleAddTask(client: Viish, message: Message<true>, task: string) {
   const data = (await client.database.prepare('SELECT * FROM todos WHERE user_id = ?').get('key')) as { tasks: string };
 
   if (!data) {
@@ -31,7 +31,7 @@ async function handleAddTask(client: Viish, message: Message, task: string) {
   }
 }
 
-async function handleRemoveTask(client: Viish, message: Message, index: number) {
+async function handleRemoveTask(client: Viish, message: Message<true>, index: number) {
   const data = (await client.database.prepare('SELECT tasks FROM todos WHERE user_id = ?').get('key')) as { tasks: string };
 
   const tasks = JSON.parse(data.tasks || '[]') as string[];
@@ -50,7 +50,7 @@ async function handleRemoveTask(client: Viish, message: Message, index: number) 
   });
 }
 
-async function handleViewTasks(client: Viish, message: Message) {
+async function handleViewTasks(client: Viish, message: Message<true>) {
   const data = (await client.database.prepare('SELECT tasks FROM todos WHERE user_id = ?').get('key')) as { tasks: string };
 
   const tasks = JSON.parse(data.tasks || '[]') as string[];
@@ -66,7 +66,7 @@ async function handleViewTasks(client: Viish, message: Message) {
   });
 }
 
-async function handleResetTasks(client: Viish, message: Message) {
+async function handleResetTasks(client: Viish, message: Message<true>) {
   client.database.prepare('UPDATE todos SET tasks = ? WHERE user_id = ?').run(JSON.stringify([]), 'key');
 
   return message.reply('Your to-do list has been reset.');

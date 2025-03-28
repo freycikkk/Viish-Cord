@@ -1,10 +1,10 @@
 /** @format */
 
 import { readdirSync } from 'node:fs';
-import type Bumblebee from '../base/Client';
+import type Viish from '../base/Client';
 import type { Command } from '../interfaces/Commands';
 
-export const loadCommands = async (client: Bumblebee): Promise<void> => {
+export const loadCommands = async (client: Viish) => {
   let loadedCommandsCount = 0;
 
   for (const dir of readdirSync('./dist/commands/')) {

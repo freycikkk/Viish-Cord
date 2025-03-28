@@ -1,13 +1,12 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
-import { handleAddReact, handleRemoveReact, handleConfig, handleReset } from '../../functions/autoReact.js';
+import { handleAddReact, handleConfig, handleRemoveReact, handleReset } from '../../functions/autoReact.js';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'autoreact',
   aliases: ['react'],
-  run: async (client: Viish, message: Message, args: string[]) => {
+  async run(client, message, args) {
     const keyword = args[1];
     const emoji = args[2];
     switch (args[0]) {
@@ -32,4 +31,4 @@ export default {
         break;
     }
   }
-};
+} satisfies Command;

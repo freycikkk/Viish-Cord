@@ -1,13 +1,12 @@
 /** @format */
 
 import axios from 'axios';
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'bal',
-  BotPerms: ['EMBED_LINKS'],
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     const address = args[0] || client.address;
     const balanceApiUrl = `https://api.blockcypher.com/v1/ltc/main/addrs/${address}`;
     const rateApiUrl = `https://api.coingecko.com/api/v3/simple/price?ids=litecoin&vs_currencies=usd,eur,inr`;
@@ -46,4 +45,4 @@ ${recentTransactions.length > 0 ? recentTransactions.join('\n') : 'No recent tra
       content: messageContent
     });
   }
-};
+} satisfies Command;

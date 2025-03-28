@@ -1,12 +1,13 @@
 /** @format */
 
 import { joinVoiceChannel } from '@discordjs/voice';
-import type { Message, VoiceChannel } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { VoiceChannel } from 'discord.js-selfbot-v13';
+import type { Command } from '../../interfaces/Commands.js';
 
 export default {
   name: 'join',
-  run: async (client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(client, message, args) {
     const channel = client.channels.cache.get(args[0] as string) || message.member?.voice.channel;
 
     if (!channel) {
@@ -26,4 +27,4 @@ export default {
     message.reply('I have joined your provided voice channel!');
     return;
   }
-};
+} satisfies Command;

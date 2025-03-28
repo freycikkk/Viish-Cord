@@ -1,11 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'hide',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     if (!message.guild?.members.me?.permissions.has('MANAGE_CHANNELS')) {
       return message.channel.send({ content: `You do not have \`ManageChannels\` Permission` });
     }
@@ -26,4 +26,4 @@ export default {
       return message.channel.send({ content: `An error occurred while hiding the channel.` });
     }
   }
-};
+} satisfies Command;

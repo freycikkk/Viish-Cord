@@ -1,12 +1,11 @@
 /** @format */
 
 import type { Message, User } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
 import type { Event } from '../../interfaces/Events.js';
 
 export default {
   name: 'messageCreate',
-  run: async (client: Viish, message: Message) => {
+  async run(client, message: Message<true>) {
     if (message.author.bot || message.author.id !== client.user?.id) return;
     const mentionedUsers = message.mentions.users;
     if (mentionedUsers.size > 0) {

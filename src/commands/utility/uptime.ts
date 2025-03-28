@@ -1,13 +1,11 @@
 /** @format */
 
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'uptime',
   aliases: ['up'],
-  voteOnly: false,
-  run: async (client: Viish, message: Message, _args: string[]) => {
+  async run(client, message, _args) {
     function formatUptime(totalSeconds: number) {
       const days = Math.floor(totalSeconds / 86400);
       totalSeconds %= 86400;
@@ -31,4 +29,4 @@ export default {
 
     message.reply(`Uptime: ${uptime}`);
   }
-};
+} satisfies Command;

@@ -1,12 +1,12 @@
 /** @format */
 
 import axios from 'axios';
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'u2i',
-  run: async (_client: Viish, message: Message, args: string[]) => {
+  aliases: [],
+  async run(_client, message, args) {
     const amountInUsd = parseFloat(args[0] as string);
     if (isNaN(amountInUsd) || amountInUsd <= 0) {
       return message.reply('Please provide a valid amount in USD.');
@@ -28,4 +28,4 @@ export default {
     }
     return;
   }
-};
+} satisfies Command;

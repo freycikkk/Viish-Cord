@@ -1,12 +1,12 @@
 /** @format */
 
 import { getVoiceConnection } from '@discordjs/voice';
-import type { Message } from 'discord.js-selfbot-v13';
-import type Viish from '../../base/Client.js';
+import type { Command } from '../../interfaces/Commands';
 
 export default {
   name: 'leave',
-  run: async (client: Viish, message: Message, _args: string[]) => {
+  aliases: [],
+  async run(client, message, _args) {
     let leftChannel = false;
 
     client.guilds.cache.forEach((guild) => {
@@ -24,4 +24,4 @@ export default {
       message.channel.send('I am not in any voice channel!');
     }
   }
-};
+} satisfies Command;

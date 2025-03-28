@@ -2,10 +2,10 @@
 
 import type { ClientEvents } from 'discord.js-selfbot-v13';
 import { readdirSync } from 'node:fs';
-import type Bumblebee from '../base/Client';
+import type Viish from '../base/Client';
 import type { Event } from '../interfaces/Events';
 
-export const loadEvents = async (client: Bumblebee): Promise<void> => {
+export const loadEvents = async (client: Viish) => {
   let loadedEventsCount = 0;
 
   for (const dir of readdirSync('./dist/events/')) {
